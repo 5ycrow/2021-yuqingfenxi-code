@@ -1,7 +1,7 @@
 from flask import jsonify
 
 
-def zhihu_list_serializer(zhihu):
+def zhihu_list_serializer(zhihu,offset,limit,total):
     zhihu_list = []
     for zh in zhihu:
         alist = {
@@ -13,4 +13,5 @@ def zhihu_list_serializer(zhihu):
             'content': zh.content
         }
         zhihu_list.append(alist)
-    return jsonify({"zhihu_list": zhihu_list, "status": 1})
+    return jsonify({"zhihu_list": zhihu_list, "status": 1,
+                    "offset":offset,"limit":limit,"total":total})

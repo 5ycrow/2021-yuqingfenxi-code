@@ -7,7 +7,7 @@ def info_serializer(info):
     }
     return jsonify({"info": info, "status": 1})
 
-def cucnews_list_serializer(cucnews):
+def cucnews_list_serializer(cucnews,offset,limit,total):
     cnews_list = []
     for cnews in cucnews:
         alist = {
@@ -18,4 +18,4 @@ def cucnews_list_serializer(cucnews):
             'content': cnews.content
         }
         cnews_list.append(alist)
-    return jsonify({"cnewsList": cnews_list, "status": 1})
+    return jsonify({"cnewsList": cnews_list, "status": 1,"offset":offset,"limit":limit,"total":total})

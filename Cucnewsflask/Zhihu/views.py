@@ -8,20 +8,30 @@ from Cucnewsflask.utils.cut2wc import wordc, cut
 
 class ZhihuHotnews(Resource):
     def get(self):
-        zhihu=Zhihu.query.all()
-        return zhihu_list_serializer(zhihu)
+        offset = request.args.get("offset")
+        limit = request.args.get("limit")
+        total = Zhihu.query.all()
+        print(offset, limit,len(total))
+
+        zhihu=Zhihu.query.offset(offset).limit(limit).all()
+        return zhihu_list_serializer(zhihu,offset,limit,len(total))
 
     def post(self):
         params=request.get_json()
         print(params)
         wanted = params['wanted']
+        offset = params['offset']
+        limit = params['limit']
 
+        try:
+                zhihus=Zhihu.query.filter(Zhihu.content.like("%"+wanted+"%"))
+                total = zhihus.count()
+                words=''
+                for zhcontent in zhihus:
+                    words = words+'\n'+zhcontent.content
+                print(words)
+                wordc(cut(words))
+        except:
+            print('db-error')
 
-        zhihus=Zhihu.query.filter(Zhihu.content.like("%"+wanted+"%"))
-        words=''
-        for zhcontent in zhihus:
-            words = words+'\n'+zhcontent.content
-        print(words)
-        wordc(cut(words))
-
-        return zhihu_list_serializer(zhihus)
+        return zhihu_list_serializer(zhihus,offset,limit,total)

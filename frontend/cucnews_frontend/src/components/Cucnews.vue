@@ -10,15 +10,15 @@
     :data="tableData"
     style="width: 100%">
     <el-table-column type="expand">
-      <template slot-scope="props">
-		  <el-form label-position="left" inline class="demo-table-expand">
+      <template slot-scope="props">  
+		<el-form label-position="left" inline class="demo-table-expand">
 			<el-form-item label="图片" style="width: 200px;">
 			  <el-image
 			  style="width: 200px;height: 200px;"
 			  :src="props.row.picurl"
 			  :preview-src-list="[props.row.picurl]"></el-image>
 			</el-form-item>
-		  </el-form>
+		</el-form>
         <el-form label-position="left" inline class="demo-table-expand">
           <el-form-item label="内容" style="width: 1200px;">
             <span>{{ props.row.content }}</span>
@@ -41,6 +41,14 @@
 	         <el-link :href="row.url" target="_blank" class="buttonText"  type="primary" :underline="false">详情</el-link>
 	     </template>
 	</el-table-column>
+	<el-table-column
+	  label="NLP"
+	  prop="nlp" width="150">
+	     <template slot-scope="snownlp">
+	         <el-button type="primary" size="mini" round @click="onNlp(snownlp.row)">NLP一键分析</el-button>
+	     </template>
+	</el-table-column>
+	
 
   </el-table>
   <el-pagination
@@ -83,7 +91,10 @@
 		currentPage: 1,
 		// 每页多少条
 		pageSize: 10,
-		tableTotal: 0
+		tableTotal: 0,
+		sentiments: 0,
+		keywords: '123',
+		summary:'123'
       }
     },
 	mounted () {
@@ -101,20 +112,43 @@
 			  console.log(this.tableData)
 			})
 		},
-		onSubmit() {
-		        // console.log(JSON.stringify({wanted: this.wanted}));
-				api.searchNews(JSON.stringify({wanted: this.wanted,offset:(this.currentPage-1)*this.pageSize,
-				limit:this.pageSize})).then(res => {
-				// console.log(res)
-				  if (res.status !== 1) {
-				    this.loading = false
-				    this.$message.error('查询失败')
-				  }
-				  this.picshow=true
-				  this.tableData = res.cnewsList
-					this.tableTotal=res.total
-				})
-		      },
+		onSubmit(){
+			// console.log(JSON.stringify({wanted: this.wanted}));
+			api.searchNews(JSON.stringify({wanted: this.wanted,offset:(this.currentPage-1)*this.pageSize,
+			limit:this.pageSize})).then(res => {
+			// console.log(res)
+			  if (res.status !== 1) {
+				this.loading = false
+				this.$message.error('查询失败')
+			  }
+			  this.picshow=true
+			  this.tableData = res.cnewsList
+				this.tableTotal=res.total
+			})
+		},
+		onNlp(row) {
+		  api.nlpApi(JSON.stringify({text: row.content})).then(res => {
+			if (res.status !== 1) {
+			  this.loading = false
+			  this.$message.error('text获取失败')
+			}
+			this.sentiments=res.sentiments
+			this.keywords = res.keywords
+			this.summary=res.summary
+			
+			this.$alert("情感分析指数(0.5为中性，越接近1越积极)："+this.sentiments+"</br>"+"关键词："+this.keywords+"</br>"+"摘要："+this.summary, '分析结果', {
+					dangerouslyUseHTMLString: true,
+			          confirmButtonText: '确定',
+			          callback: action => {
+			            this.$message({
+			              type: 'info',
+			              message: `分析完成`
+			            });
+			          }
+			        });
+			
+		  })
+		},
 			   handleSizeChange(val) {
 				  this.pageSize = val;
 				  this.getNews()

@@ -46,6 +46,13 @@
 	      <el-link :href="row.contentUrl" target="_blank" class="buttonText"  type="primary" :underline="false">详情</el-link>
 	  </template>
 	</el-table-column>
+	<el-table-column
+	  label="NLP"
+	  prop="nlp" width="150">
+	     <template slot-scope="snownlp">
+	         <el-button type="primary" size="mini" round @click="onNlp(snownlp.row)">NLP一键分析</el-button>
+	     </template>
+	</el-table-column>
   </el-table>
   <el-pagination
       @size-change="handleSizeChange"
@@ -87,7 +94,10 @@
 		currentPage: 1,
 		// 每页多少条
 		pageSize: 10,
-		tableTotal:0
+		tableTotal:0,
+		sentiments: 0,
+		keywords: '123',
+		summary:'123'
       }
     },
 	mounted () {
@@ -117,6 +127,29 @@
 				  this.tableTotal=res.total
 				})
 		      },
+			  onNlp(row) {
+			    api.nlpApi(JSON.stringify({text: row.content})).then(res => {
+			  	if (res.status !== 1) {
+			  	  this.loading = false
+			  	  this.$message.error('text获取失败')
+			  	}
+			  	this.sentiments=res.sentiments
+			  	this.keywords = res.keywords
+			  	this.summary=res.summary
+			  	
+			  	this.$alert("情感分析指数："+this.sentiments+"</br>"+"关键词："+this.keywords+"</br>"+"摘要："+this.summary, '分析结果', {
+			  			dangerouslyUseHTMLString: true,
+			  	          confirmButtonText: '确定',
+			  	          callback: action => {
+			  	            this.$message({
+			  	              type: 'info',
+			  	              message: `分析完成`
+			  	            });
+			  	          }
+			  	        });
+			  	
+			    })
+			  },
 			   handleSizeChange(val) {
 				  this.pageSize = val;
 				  this.getZhihu()

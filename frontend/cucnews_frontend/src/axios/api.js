@@ -29,5 +29,8 @@ export default {
   },
   searchZhihu (data) {
     return post('/zhihu/hotnews',data)
-  }
+  },
+	nlpApi (data) {
+		return post('/nlp/snownlp',data)
+	}
 }

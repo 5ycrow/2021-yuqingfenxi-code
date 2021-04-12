@@ -4,6 +4,7 @@ from Cucnewsflask.Cucnews.models import Cucnews
 from flask_restful import request
 from Cucnewsflask.utils.cut2wc import wordc,cut
 from Cucnewsflask.Cucnews.serializers import info_serializer, cucnews_list_serializer
+from Cucnewsflask.utils.nlputils import nplutils
 
 
 class CucnewsAPI(Resource):
@@ -43,3 +44,10 @@ class CucnewsGetNews(Resource):
         except:
             print('db-error')
         return cucnews_list_serializer(cucnews,offset,limit,total)
+
+class NlpApi(Resource):
+    def post(self):
+        params = request.get_json()
+        r = nplutils(params['text'])
+        return r
+

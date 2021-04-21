@@ -16,6 +16,8 @@ def create_app():
     app.register_blueprint(cucnews_blue)
     from Cucnewsflask.Zhihu import zhihu_blue
     app.register_blueprint(zhihu_blue)
+    from Cucnewsflask.Weibo import weibo_blue
+    app.register_blueprint(weibo_blue)
 
 
 

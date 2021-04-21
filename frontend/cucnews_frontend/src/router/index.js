@@ -4,6 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import Cucnews from '@/components/Cucnews'
 import Zhihu from '@/components/Zhihu'
 import Home from '@/components/Home'
+import WeiBo from '@/components/WeiBo'
+import WeiBoUser from '@/components/WeiBoUser'
 
 Vue.use(Router)
 
@@ -22,7 +24,10 @@ export default new Router({
 	  component: Home,
 	  children: [
 	    { path: '/cucnews', component: Cucnews },
-		{ path: '/zhihu', component: Zhihu }
+		  { path: '/zhihu', component: Zhihu },
+			{ path: '/weibo', component: WeiBo },
+			{ path: '/weibouser', component: WeiBoUser },
+			
 	  ]
 	}
   ]

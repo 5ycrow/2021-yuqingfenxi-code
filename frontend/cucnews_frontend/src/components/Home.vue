@@ -44,6 +44,8 @@ export default {
       menuList: [
 		 {id: 0, name: '中传要闻', index: '/cucnews'},
 		 {id: 1, name: '知乎热榜', index: '/zhihu'},
+		 {id: 2, name: '微博详情', index: '/weibo'},
+		 {id: 3, name: '微博用户', index: '/weibouser'},
       ],
       isCollapse: false
     }

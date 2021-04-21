@@ -27,10 +27,16 @@ export default {
   getZhihu (params) {
     return get('/zhihu/hotnews',params)
   },
+  getWeibo (params) {
+    return get('/weibo/info',params)
+  },
+  getWeiboUser (params) {
+    return get('/weibouser/info',params)
+  },
   searchZhihu (data) {
     return post('/zhihu/hotnews',data)
   },
-	nlpApi (data) {
-		return post('/nlp/snownlp',data)
-	}
+  nlpApi (data) {
+	return post('/nlp/snownlp',data)
+  }
 }

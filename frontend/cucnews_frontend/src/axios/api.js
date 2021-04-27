@@ -33,6 +33,9 @@ export default {
   getWeiboUser (params) {
     return get('/weibouser/info',params)
   },
+	getWeiboTopic (params) {
+	  return get('/weibotopic/info',params)
+	},
   searchZhihu (data) {
     return post('/zhihu/hotnews',data)
   },

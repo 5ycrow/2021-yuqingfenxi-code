@@ -26,3 +26,18 @@ class WeiBoUser(db.Model):
     weibo_num = db.Column(db.String(255), nullable=False)
     following=db.Column(db.String(255), nullable=False)
     followers = db.Column(db.String(255), nullable=False)
+
+class WeiBoTopic(db.Model):
+    __tablename__ = 'weibo_topic'
+    weibo_id = db.Column(db.Integer,primary_key=True, nullable=False)
+    nickname=db.Column(db.String(255), nullable=False)
+    gender = db.Column(db.String(255), nullable=False)
+    location = db.Column(db.String(255), nullable=False)
+    follow_num = db.Column(db.String(255), nullable=False)
+    # follower_num = db.Column(db.String(255), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    publish_time = db.Column(db.String(255), nullable=False)
+    publish_tool = db.Column(db.String(255), nullable=False)
+    like_num = db.Column(db.String(255), nullable=False)
+    retweet_num=db.Column(db.String(255), nullable=False)
+    comment_num = db.Column(db.String(255), nullable=False)

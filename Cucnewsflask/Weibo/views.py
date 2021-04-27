@@ -1,7 +1,7 @@
 from flask_restful import Resource, request
 
-from Cucnewsflask.Weibo.models import WeiBo,WeiBoUser
-from Cucnewsflask.Weibo.serializers import weibo_list_serializer, weibouser_list_serializer
+from Cucnewsflask.Weibo.models import WeiBo, WeiBoUser, WeiBoTopic
+from Cucnewsflask.Weibo.serializers import weibo_list_serializer, weibouser_list_serializer, weibotopic_list_serializer
 
 
 class WeiboInfo(Resource):
@@ -23,3 +23,13 @@ class WeiboUserInfo(Resource):
 
         weibouser=WeiBoUser.query.offset(offset).limit(limit).all()
         return weibouser_list_serializer(weibouser,offset,limit,len(total))
+
+class WeiboTopicInfo(Resource):
+    def get(self):
+        offset = request.args.get("offset")
+        limit = request.args.get("limit")
+        total = WeiBoTopic.query.all()
+        print(offset, limit,len(total))
+
+        weibotopic=WeiBoTopic.query.offset(offset).limit(limit).all()
+        return weibotopic_list_serializer(weibotopic,offset,limit,len(total))

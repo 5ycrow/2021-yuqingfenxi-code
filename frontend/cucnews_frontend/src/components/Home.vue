@@ -46,6 +46,7 @@ export default {
 		 {id: 1, name: '知乎热榜', index: '/zhihu'},
 		 {id: 2, name: '微博详情', index: '/weibo'},
 		 {id: 3, name: '微博用户', index: '/weibouser'},
+		 {id: 4, name: '微博专题', index: '/weibotopic'},
       ],
       isCollapse: false
     }

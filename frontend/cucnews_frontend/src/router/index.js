@@ -6,6 +6,7 @@ import Zhihu from '@/components/Zhihu'
 import Home from '@/components/Home'
 import WeiBo from '@/components/WeiBo'
 import WeiBoUser from '@/components/WeiBoUser'
+import WeiBoTopic from '@/components/WeiBoTopic'
 
 Vue.use(Router)
 
@@ -27,6 +28,7 @@ export default new Router({
 		  { path: '/zhihu', component: Zhihu },
 			{ path: '/weibo', component: WeiBo },
 			{ path: '/weibouser', component: WeiBoUser },
+			{ path: '/weibotopic', component: WeiBoTopic }
 			
 	  ]
 	}

@@ -12,11 +12,13 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "d3": "^6.7.0",
     "element-ui": "^2.13.2",
     "less": "^4.1.1",
     "less-loader": "^5.0.0",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-vis-network": "^1.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

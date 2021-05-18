@@ -47,11 +47,12 @@ export default {
 		 {id: 2, name: '微博详情', index: '/weibo'},
 		 {id: 3, name: '微博用户', index: '/weibouser'},
 		 {id: 4, name: '微博专题', index: '/weibotopic'},
+		 {id: 5, name: 'JOJO人物关系图谱', index: '/jojo'}
       ],
       isCollapse: false
     }
   }
- }
+}
 </script>
 <style lang='less' scoped>
 .el-header {

@@ -35,7 +35,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      '@': resolve('src')
     }
   },
   module: {
@@ -46,11 +46,11 @@ module.exports = {
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
-		{
-		// 此种方法在控制台中标签样式显示的是style标签样式
+      {
+        // 此种方法在控制台中标签样式显示的是style标签样式
 		  test: /\.less$/,
-		  loader: "style-loader!css-loader!less-loader",
-		},
+		  loader: 'style-loader!css-loader!less-loader'
+      },
       {
         test: /\.js$/,
         loader: 'babel-loader',

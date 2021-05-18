@@ -19,27 +19,30 @@ export default {
     return get('/cucnews/index')
   },
   getNews (params) {
-    return get('/cucnews/getnews',params)
+    return get('/cucnews/getnews', params)
   },
   searchNews (data) {
-    return post('/cucnews/getnews',data)
+    return post('/cucnews/getnews', data)
   },
   getZhihu (params) {
-    return get('/zhihu/hotnews',params)
+    return get('/zhihu/hotnews', params)
   },
   getWeibo (params) {
-    return get('/weibo/info',params)
+    return get('/weibo/info', params)
   },
   getWeiboUser (params) {
-    return get('/weibouser/info',params)
+    return get('/weibouser/info', params)
   },
-	getWeiboTopic (params) {
-	  return get('/weibotopic/info',params)
-	},
+  getWeiboTopic (params) {
+	  return get('/weibotopic/info', params)
+  },
   searchZhihu (data) {
-    return post('/zhihu/hotnews',data)
+    return post('/zhihu/hotnews', data)
   },
   nlpApi (data) {
-	return post('/nlp/snownlp',data)
+    return post('/nlp/snownlp', data)
+  },
+  getJoJo () {
+    return get('/jojo/getjojo')
   }
 }

@@ -12,6 +12,7 @@ def create_app():
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
+
     from Cucnewsflask.Cucnews import cucnews_blue
     app.register_blueprint(cucnews_blue)
     from Cucnewsflask.Zhihu import zhihu_blue

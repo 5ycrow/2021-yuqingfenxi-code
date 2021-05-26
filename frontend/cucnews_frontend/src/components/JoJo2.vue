@@ -19,7 +19,7 @@ export default {
 		autoResize: true,
 		clickToUse: true,
         nodes: {
-		  shape: 'circularImage',
+		  // shape: 'circularImage',
           borderWidth: 2
         },
         edges: {
@@ -66,11 +66,11 @@ export default {
     }
   },
   mounted () {
-	  this.getJoJo()
+	  this.getJoJo2()
   },
   methods: {
-	  getJoJo () {
-		  api.getJoJo().then(res => {
+	  getJoJo2 () {
+		  api.getJoJo2().then(res => {
 			  console.log(res)
 			  this.nodes = res.nodes
 			  this.edges = res.edges

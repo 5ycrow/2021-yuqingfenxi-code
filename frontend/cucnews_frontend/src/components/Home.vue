@@ -47,7 +47,8 @@ export default {
 		 {id: 2, name: '微博详情', index: '/weibo'},
 		 {id: 3, name: '微博用户', index: '/weibouser'},
 		 {id: 4, name: '微博专题', index: '/weibotopic'},
-		 {id: 5, name: 'JOJO人物关系图谱', index: '/jojo'}
+		 {id: 5, name: 'JOJO人物关系图谱', index: '/jojo'},
+		 {id: 6, name: 'JOJO人物关系HITS分析', index: '/jojo2'}
       ],
       isCollapse: false
     }

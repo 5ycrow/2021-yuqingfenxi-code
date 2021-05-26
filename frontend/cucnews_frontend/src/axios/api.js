@@ -44,5 +44,8 @@ export default {
   },
   getJoJo () {
     return get('/jojo/getjojo')
+  },
+  getJoJo2 () {
+    return get('/jojo/getjojo2')
   }
 }

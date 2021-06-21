@@ -1,85 +1,11 @@
 <template>
-	<div style="width: 100%;height: 100%;">
-		<network ref="network" style="width: 1400px;height: 700px;"
-		:nodes="nodes"
-		:edges="edges"
-		:options="options">
-		</network>
-	</div>
+	<div>
+  <div height="900px">
+    <iframe src="https://aninet-project.github.io/#/network/JoJo%E7%9A%84%E5%A5%87%E5%A6%99%E5%86%92%E9%99%A9" id="mobsf" frameborder="0" scrolling="auto" width="1100" height="900" style="position:absolute;top: -100px;left: 250px;">></iframe>
+  </div>
+  </div>
 </template>
 
 <script>
-import api from '@/axios/api'
-export default {
-  data () {
-    return {
-      nodes: [],
-      edges: [],
-      options: {
-		autoResize: true,
-		clickToUse: true,
-        nodes: {
-		  // shape: 'circularImage',
-          borderWidth: 2
-        },
-        edges: {
-          color: 'lightgray'
-        },
-        interaction: {
-          dragNodes: true,
-          dragView: true,
-          hideEdgesOnDrag: false,
-          hideEdgesOnZoom: false,
-          hideNodesOnDrag: false,
-          hover: true,
-          hoverConnectedEdges: true,
-          keyboard: {
-            enabled: false,
-            speed: {x: 10, y: 10, zoom: 0.02},
-            bindToWindow: true
-          },
-          multiselect: false,
-          navigationButtons: false,
-          selectable: true,
-          selectConnectedEdges: true,
-          tooltipDelay: 300,
-          zoomView: true
-        },
-		  layout: {
-		    randomSeed: undefined,
-		    improvedLayout: true,
-		    clusterThreshold: 150,
-		    hierarchical: {
-		      enabled: false,
-		      levelSeparation: 150,
-		      nodeSpacing: 100,
-		      treeSpacing: 200,
-		      blockShifting: true,
-		      edgeMinimization: true,
-		      parentCentralization: true,
-		      direction: 'UD', // UD, DU, LR, RL
-		      sortMethod: 'hubsize' // hubsize, directed
-		      // shakeTowards: 'leaves' // roots, leaves
-		    }
-        }
-      }
-    }
-  },
-  mounted () {
-	  this.getJoJo2()
-  },
-  methods: {
-	  getJoJo2 () {
-		  api.getJoJo2().then(res => {
-			  console.log(res)
-			  this.nodes = res.nodes
-			  this.edges = res.edges
-		  })
-	  }
 
-  }
-}
 </script>
-
-<style>
-</style>

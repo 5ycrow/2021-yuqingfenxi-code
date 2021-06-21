@@ -9,6 +9,7 @@ import WeiBoUser from '@/components/WeiBoUser'
 import WeiBoTopic from '@/components/WeiBoTopic'
 import JoJo from '@/components/JoJo'
 import JoJo2 from '@/components/JoJo2'
+import JoJoAnalysis from '@/components/JoJoAnalysis'
 
 Vue.use(Router)
 
@@ -32,7 +33,8 @@ export default new Router({
         { path: '/weibouser', component: WeiBoUser },
         { path: '/weibotopic', component: WeiBoTopic },
         { path: '/jojo', component: JoJo },
-        { path: '/jojo2', component: JoJo2 }
+        { path: '/jojo2', component: JoJo2 },
+        { path: '/jojoanalysis', component: JoJoAnalysis }
       ]
     }
   ]

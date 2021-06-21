@@ -21,7 +21,7 @@ import os
 from datetime import datetime, timedelta
 import sys
 
-Cookie = '_T_WM=ba736f7e4048423e681f04958c9f02cb; SUB=_2A25NeRVmDeRhGeBK7lAY-SnKzT6IHXVuhbsurDV6PUJbktAfLXbzkW1NR6Ssqi40TK9uTB6apDidaI1D6gvLXFOZ; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9W5e5By7iueqvmc1GGDEfiZa5NHD95QcSh-E1K.NSoqEWs4Dqcjdi--Xi-zRiK.Xi--ciKnfi-2Ei--fiK.XiKn4; SSOLoginState=1618830646'
+Cookie = 'SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9W5e5By7iueqvmc1GGDEfiZa5NHD95QcSh-E1K.NSoqEWs4Dqcjdi--Xi-zRiK.Xi--ciKnfi-2Ei--fiK.XiKn4; WEIBOCN_WM=3349; H5_wentry=H5; backURL=https%3A%2F%2Fm.weibo.cn%2F; SUB=_2A25Ny2yADeRhGeBK7lAY-SnKzT6IHXVvNHTIrDV6PUJbkdAKLWP-kW1NR6SsqmGHR-h7q0K0ymfN830M63ppl0JD; _T_WM=87518858102; MLOGIN=1; M_WEIBOCN_PARAMS=lfid%3D100103type%253D1%2526q%253DJOJO%26luicode%3D20000174'
 
 User_Agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0'
 
@@ -487,12 +487,12 @@ def time_params_formatter(params_time, offset_day=0, offset_hour=-8):
 if __name__ == '__main__':
     # filter = 0 爬取所有微博，filter = 1 爬取原创微博
     filter = 1
-    keyword = '福岛'
+    keyword = 'JOJO'
     # 时间是从 start_time 到 end_time 这样
     # 程序是从 end_time 到 start_time 这样爬
     # end_time + 1 day + 8 hour
     # start_time + 8hour
-    start_time, end_time = '2021-04-16-04', '2021-04-25-05'
+    start_time, end_time = '2021-05-16-04', '2021-06-19-05'
     if start_time >= end_time:
         raise Exception('start_time 是离现在更远的那个时间，必须小于 end_time')
     WeiboTopicScrapy(keyword=keyword, filter=1, start_time=start_time, end_time=end_time)

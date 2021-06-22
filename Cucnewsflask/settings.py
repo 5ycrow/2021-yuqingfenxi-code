@@ -21,6 +21,8 @@ def create_app():
     app.register_blueprint(weibo_blue)
     from Cucnewsflask.JoJo import jojo_blue
     app.register_blueprint(jojo_blue)
+    from Cucnewsflask.WbJoJo import Jojo2_blue
+    app.register_blueprint(Jojo2_blue)
 
 
 

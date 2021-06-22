@@ -21,10 +21,10 @@ import os
 from datetime import datetime, timedelta
 import sys
 
-Cookie = 'SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9W5e5By7iueqvmc1GGDEfiZa5NHD95QcSh-E1K.NSoqEWs4Dqcjdi--Xi-zRiK.Xi--ciKnfi-2Ei--fiK.XiKn4; WEIBOCN_WM=3349; H5_wentry=H5; backURL=https%3A%2F%2Fm.weibo.cn%2F; SUB=_2A25Ny2yADeRhGeBK7lAY-SnKzT6IHXVvNHTIrDV6PUJbkdAKLWP-kW1NR6SsqmGHR-h7q0K0ymfN830M63ppl0JD; _T_WM=87518858102; MLOGIN=1; M_WEIBOCN_PARAMS=lfid%3D100103type%253D1%2526q%253DJOJO%26luicode%3D20000174'
+Cookie = 'SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9W5e5By7iueqvmc1GGDEfiZa5NHD95QcSh-E1K.NSoqEWs4Dqcjdi--Xi-zRiK.Xi--ciKnfi-2Ei--fiK.XiKn4; _T_WM=c884509bc3a8b95f83416c0c5a5fdbd5; H5_wentry=H5; SCF=AqjWoG1AHJZ3UWuGFT9s6-8wkV3BMa7z869_4yQ5-mvOgH8uFwiAq58LOQUZUd-KeyyPH_yLC1OuxD90sVybSzc.; SUB=_2A25N1f5aDeRhGeBK7lAY-SnKzT6IHXVvOYISrDV6PUJbktB-LRCjkW1NR6Ssqi3mAjkrOhpGOhvDyh--qZMfwkmj; SSOLoginState=1624346122'
 
-User_Agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0'
-
+# User_Agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0'
+User_Agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36'
 class WeiboTopicScrapy():
 
     def __init__(self, keyword, filter, start_time, end_time):
@@ -83,7 +83,7 @@ class WeiboTopicScrapy():
             weibo_content = weibo_content[:weibo_content.rfind(u'赞')]
             a_text = info.xpath('div//a/text()')
             if u'全文' in a_text:
-                weibo_link = 'https://weibo.cn/comment/' + weibo_id
+                weibo_link = 'https://m.weibo.cn/comment/' + weibo_id
                 wb_content = self.get_long_weibo(weibo_link)
                 if wb_content:
                     weibo_content = wb_content
@@ -117,7 +117,7 @@ class WeiboTopicScrapy():
             wb_content = wb_content[:wb_content.rfind('赞')]
             a_text = info.xpath('div//a/text()')
             if '全文' in a_text:
-                weibo_link = 'https://weibo.cn/comment/' + weibo_id
+                weibo_link = 'https://m.weibo.cn/comment/' + weibo_id
                 weibo_content = self.get_long_retweet(weibo_link)
                 if weibo_content:
                     wb_content = weibo_content
@@ -247,7 +247,7 @@ class WeiboTopicScrapy():
         """提取微博原始图片url"""
         try:
             a_list = info.xpath('./div/a/@href')
-            all_pic = 'https://weibo.cn/mblog/picAll/' + weibo_id + '?rl=1'
+            all_pic = 'https://m.weibo.cn/mblog/picAll/' + weibo_id + '?rl=1'
             if all_pic in a_list:
                 selector = self.deal_html(all_pic)
                 preview_picture_list = selector.xpath('//img/@src')
@@ -400,7 +400,7 @@ class WeiboTopicScrapy():
 
         for page in range(1, pageNum):
             print('\n\n第{}页....\n'.format(page))
-            Referer = 'https://weibo.cn/search/mblog?hideSearchFrame=&keyword={}&page={}'.format(quote(self.keyword),
+            Referer = 'https://m.weibo.cn/search/mblog?hideSearchFrame=&keyword={}&page={}'.format(quote(self.keyword),
                                                                                                  page - 1)
             headers = {
                 'Cookie': Cookie,
@@ -416,7 +416,7 @@ class WeiboTopicScrapy():
                 'sort': 'time',
                 'page': page
             }
-            res = requests.get(url='https://weibo.cn/search/mblog', params=params, headers=headers)
+            res = requests.get(url='https://m.weibo.cn/search/mblog', params=params, headers=headers)
 
             html = etree.HTML(res.text.encode('utf-8'))
 
@@ -486,13 +486,13 @@ def time_params_formatter(params_time, offset_day=0, offset_hour=-8):
 
 if __name__ == '__main__':
     # filter = 0 爬取所有微博，filter = 1 爬取原创微博
-    filter = 1
+    filter = 0
     keyword = 'JOJO'
     # 时间是从 start_time 到 end_time 这样
     # 程序是从 end_time 到 start_time 这样爬
     # end_time + 1 day + 8 hour
     # start_time + 8hour
-    start_time, end_time = '2021-05-16-04', '2021-06-19-05'
+    start_time, end_time = '2021-05-16-05', '2021-06-19-05'
     if start_time >= end_time:
         raise Exception('start_time 是离现在更远的那个时间，必须小于 end_time')
     WeiboTopicScrapy(keyword=keyword, filter=1, start_time=start_time, end_time=end_time)

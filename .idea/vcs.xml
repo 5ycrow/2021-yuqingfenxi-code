@@ -2,7 +2,11 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Weibo_Spider" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/frontend/cucnews_frontend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/weibo-crawler" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/weibo-search" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/weiboSpider" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/weibosearch" vcs="Git" />
   </component>
 </project>

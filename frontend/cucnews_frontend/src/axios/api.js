@@ -47,5 +47,8 @@ export default {
   },
   getJoJo2 () {
     return get('/jojo/getjojo2')
+  },
+  getJoJo3 (params) {
+	  return get('/jojo/info', params)
   }
 }

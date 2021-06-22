@@ -49,7 +49,8 @@ export default {
 		 {id: 4, name: '微博专题', index: '/weibotopic'},
 		 // {id: 5, name: 'JOJO人物关系图谱', index: '/jojo'},
 		 {id: 5, name: 'JOJO人物关系图谱', index: '/jojo2'},
-		 {id: 6, name: 'JOJO人物关系分析', index: '/jojoanalysis'}
+		 {id: 6, name: 'JOJO人物关系分析', index: '/jojoanalysis'},
+		 {id: 7, name: 'JOJO微博专题', index: '/jojo3'}
 
       ],
       isCollapse: false
